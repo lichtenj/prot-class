@@ -1,0 +1,405 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>
+            Functional Genomics Analysis
+        </title>
+        <!--The style and scripts are taken from Google-->
+        <style>
+            body,td,a,p,.h{font-family:arial,sans-serif}.h{font-size:20px}.h{color:#3366cc}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}#gbar{float:left;font-weight:bold;height:22px;padding-left:2px}#gbh{border-top:1px solid #c9d7f1;font-size:0;height:0;position:absolute;right:0;top:24px;width:200%}#gbi{background:#fff;border:1px solid;border-color:#c9d7f1 #36c #36c #a2bae7;font-size:13px;top:24px;z-index:1000}#guser{padding-bottom:7px !important}#gbar,#guser{font-size:13px;padding-top:1px !important}@media all{.gb1,.gb3{height:22px;margin-right:.73em;vertical-align:top}}#gbi,.gb2{display:none;position:absolute;width:10em}.gb2{z-index:1001}#gbar a,#gbar a:active,#gbar a:visited{color:#00c;font-weight:normal}.gb2 a,.gb3 a{text-decoration:none}.gb2 a{display:block;padding:.2em .5em}#gbar .gb2 a:hover{background:#36c;color:#fff}
+        </style>
+        
+        <script language="JavaScript">
+
+        function openManual(position)
+        {
+            var url = "../mswiki/" + position;
+            manualwindow=window.open(url,'Manual','height=620,width=620,resize=yes,location=no,directories=no,status=no,menubar=no,copyhistory=no,scrollbars=yes,left=2500,top=300,screenX=2500,screenY=300');
+            if (window.focus) {manualwindow.focus()}
+        }
+
+        function ShowOptional(selected)
+        {
+            if ( selected == "Yes" )
+            {
+                document.getElementById("OptionalParameters").style.display = "block";
+            }
+            else
+            {
+                document.getElementById("OptionalParameters").style.display = "none";
+            }
+        }
+        
+        function checkform ( form )
+        {
+          if (form.USEREMAIL.value == "") {
+            alert( "Please enter your email address." );
+            form.USEREMAIL.focus();
+            return false ;
+          }
+          
+          if (form.Number_Hits.value == "") {
+            alert( "Please enter the number hits." );
+            form.Number_Hits.focus();
+            return false ;
+          }
+          
+          if (form.ms_file.value == "") {
+            alert( "Please supply a archive with peak lists." );
+            form.ms_file.focus();
+            return false ;
+          }
+          if(form.ms_file.value.lastIndexOf(".zip")==-1)
+          {
+            alert("File extension must match .zip .");
+            form.ms_file.focus();
+            return false;
+          }
+          
+          if (form.Mass.value == "") {
+            alert( "Please enter a Mass type." );
+            form.Mass.focus();
+            return false ;
+          }
+          
+          if (form.Error.value == "") {
+            alert( "Please enter an Error." );
+            form.Error.focus();
+            return false ;
+          }
+          
+          return true ;
+        }
+
+        window.google={kEI:"GWeFR76ONZacebnJ1TM",kEXPI:"17259,17735",kHL:"en"};
+        window.gbar={};(function(){;var g=window.gbar,a,l,d;function m(b,f,e){b.display=b.display=="block"?"none":"block";b.left=f+"px";b.top=e+"px"}g.tg=function(b){var f=0,e,c,h,i=0,j=window.navExtra;!l&&(l=document.getElementById("gbar"));!d&&(d=l.getElementsByTagName("span"));(b||window.event).cancelBubble=true;if(!a){a=document.createElement(Array.every||window.createPopup?"iframe":"div");a.frameBorder="0";a.id="gbi";a.scrolling="no";a.src="#";document.body.appendChild(a);if(j&&d[8])for(var n in j){var k=document.createElement("span");k.appendChild(j[n]);k.className="gb2";d[0].parentNode.insertBefore(k,d[8])}document.onclick=g.close}for(;d[i];i++){c=d[i];h=c.className;if(h=="gb3"){e=c.offsetLeft;while(c=c.offsetParent)e+=c.offsetLeft;
+                        m(a.style,e,24)} //this controls the vertical offset
+                        else if(h=="gb2"){m(c.style,e+1,25+f);f+=20}} // first value controls the vertical offset of the text while the last value controls the line spacing
+                        a.style.height=f+"px"};g.close=function(b){a&&a.style.display=="block"&&g.tg(b)};})();
+                        
+		function DisplayUpload(selectBox)
+		{
+			var row = document.getElementById("UPLOAD");
+			if(selectBox.value == "other")
+			{
+				row.style.display = "";
+			}
+			else
+			{
+				row.style.display = "none";
+			}	
+		}
+        </script>
+
+    </head>
+	
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-3360093-3");
+		pageTracker._trackPageview();
+	</script>
+
+    <body bgcolor=#ffffff text=#000000 link=#0000cc vlink=#551a8b alink=#ff0000 onload="sf();if(document.images){new Image().src='/images/nav_logo3.png'}" topmargin=3 marginheight=3>
+        <!-- <script type="text/javascript" src="wz_tooltip.js"></script> -->
+        <div id=gbar>
+            <nobr>
+                <span class=gb1>Functional Genomics Analysis</span>
+                <!-- <span class=gb3><a href="http://www.google.com/intl/en/options/" onclick="this.blur();gbar.tg(event);return false"><u>more</u>
+                    <span style=font-size:11px>&#9660;</span></a>
+                </span> -->
+                <!-- None of the links below are valid. Update needed before inclusion -->
+                <!-- <span class=gb2><a href="./proteomics/index.html">MS-Seeker</a></span> -->
+                <!-- <span class=gb2><a href="http://word-seeker.org">WordSeeker</a></span> -->
+                <!-- <span class=gb2><a href="http://132.235.14.51:8080">SigBench</a></span> -->
+            </nobr>
+        </div> 
+        <div id=gbh></div>
+        <div align=right id=guser style="font-size:84%;padding:0 0 4px" width=100%>
+            <nobr>
+            	<!-- There is no wiki for this toolkit -->
+                <!-- <a href="./mswiki/">Help</a> -->
+            </nobr>
+        </div>
+        <center>                
+			<img alt="Functional_Genomics" height=160 src="Functional_Genomics.png" width=600><br><br>
+                <h1>Motif Mining</h1>
+                <table>
+			<tr>
+				<td ROWSPAN=62 valign=top align=justify width=400>					
+					<p>
+						The motif mining approach presented here is geared towards the discovery of user defined amino acid pattern. The patterns include amino acid biases, traditional string based patterns as well as well established patterns describing known biological constructs like signal peptides.
+					</p>
+					<p>
+						The mined and filtered sequences are used to search for similar sequences (using BLAST) in other organisms. 
+					</p>
+					<form action="/cgi-bin/Functional_Genomics/annotation_load.pl" method="post" enctype="multipart/form-data"> 
+						<p align=left>Annotations to Upload: <input type="file" name="file" /></p> 
+						<p><input type="submit" name="Upload" value="Submit Form" /></p> 
+					</form> 
+				</td>
+				<td ROWSPAN=62 width=100>&nbsp;</td>
+				<td><h3>General</h3></td>
+				<form  style="margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0; " action="./cgi-bin/functional_genomics_main.pl" method="post" enctype="multipart/form-data" name="form3">
+		<td></td>
+			</tr>
+			<tr>
+				<!--<td><input type="text" name="FILE" value="../dat/ath1.pep" id="FILE"  alt="file"  /></td>-->
+				<td>FASTA File</td><td>
+					
+				<select name="FILE" id="FILE"  alt="file" onchange="DisplayUpload(this)">
+					<option value="../../FASTAfiles/ath1.pep">Arabidopsis</option>
+					<option value="../../FASTAfiles/Poptr1.pep">Poplar</option>
+					<option value="../../FASTAfiles/rice.pep">Rice</option>
+					<option value="other">Upload File</option>
+				</select>
+				</td>					
+			</tr>
+			<tr id="UPLOAD" name="UPLOAD" style="display: none">
+				<td>Upload File</td>
+				<td>
+					<input type="file" name="UPFILE" id="UPFILE" /> 
+				</td>
+			</tr>
+			<tr>
+				<td>Email</td><td><input type="text" name="USEREMAIL"  id="USEREMAIL"  alt="email"  /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>BiasedAA</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="BAA_OPT" id="OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Short</td><td><input type="text" name="BAA_SHORT" value="" id="BAA_SHORT" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Long</td><td><input type="text" name="BAA_LONG" value="" id="BAA_LONG" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Threshold</td><td><input type="text" name="BAA_THRESHOLD" value="50" id="BAA_THRESHOLD" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Window</td><td><input type="text" name="BAA_WINDOW" value="" id="BAA_WINDOW" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Amino Acids</td><td><input type="text" name="BAA_AA" value="PAST" id="BAA_AA" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>AgPeptide</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="AgPEP_OPT" id="AgPEP_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Short</td><td><input type="text" name="AgPEP_SHORT" value="50" id="AgPEP_SHORT" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Long</td><td><input type="text" name="AgPEP_LONG" value="75" id="AgPEP_LONG" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Threshold</td><td><input type="text" name="AgPEP_THRESHOLD" value="35" id="AgPEP_THRESHOLD" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Window</td><td><input type="text" name="AgPEP_WINDOW" value="50" id="AgPEP_WINDOW" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Amino Acids</td><td><input type="text" name="AgPEP_AA" value="PAST" id="AgPEP_AA" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>Fasciclin</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="FASC_OPT" id="FASC_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>H1 Motif</td><td><input type="text" name="FASC_H1M" value="[MALIT]T[VILS][FLCM][CAVT][PVLIS][GSTKRNDPEIV]+[DNS][DSENAGE]+[ASQM]" id="FASC_H1M" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Search Length</td><td><input type="text" name="FASC_LENGTH" value="100" id="FASC_LENGTH" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>AGP Region Motif</td><td><input type="text" name="FASC_MOTIF" value="[^P]+P[^P]+P" id="FASC_MOTIF" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>Extensin</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="EXT_OPT" id="EXT_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Pattern 0</td><td><input type="text" name="EXT_0" value="SPPP 2" id="EXT_0" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Pattern 1</td><td><input type="text" name="EXT_1" value="SPPPP 2" id="EXT_1" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>PRP</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="PRPOPT" id="PRPOPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Pattern_0</td><td><input type="text" name="PRP0" value="KKPCPP 2" id="PRP0" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Pattern_1</td><td><input type="text" name="PRP1" value="PPV.[KC] 2" id="PRP1" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>SignalP</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="SigP_OPT" id="SigP_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Start</td><td><input type="text" name="SigP_START" value="0" id="SigP_START" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Search Length</td><td><input type="text" name="SigP_LENGTH" value="70" id="SigP_LENGTH" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Threshold</td><td><input type="text" name="SigP_THRESHOLD" value="2.9" id="SigP_THRESHOLD" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>GPI</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="GPI_OPT" id="GPI_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Min Philic Region</td><td><input type="text" name="GPI_MIN_PHIL" value="8" id="GPI_MIN_PHIL" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Max Philic Region</td><td><input type="text" name="GPI_MAX_PHIL" value="12" id="GPI_MAX_PHIL" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>						
+				<td>Min Phobic Region</td><td><input type="text" name="GPI_MIN_PHOB" value="8" id="GPI_MIN_PHOB" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Max Phobic Region</td><td><input type="text" name="GPI_MAX_PHOB" value="24" id="GPI_MAX_PHOB" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Omega Site Threshold</td><td><input type="text" name="GPI_OMEGA" value="0.1" id="GPI_OMEGA" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Hydrophobicity Threshold</td><td><input type="text" name="GPI_HYDRO" value="0.2" id="GPI_HYDRO" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td><h3>BiasedPRP</h3></td>
+			</tr>
+			<tr>
+				<td>Include Test</td>
+				<td>
+					<select style="select" name="BPRP_OPT" id="BPRP_OPT" onChange="javascript: ShowOptional(document.getElementById('OPT').value);">
+                                        	<option value="1" selected="selected">Yes</option>       
+                                                <option value="0">No</option>
+                                        </select>
+                                </td>
+			</tr>
+			<tr>
+				<td>Short</td><td><input type="text" name="BPRP_SHORT" value="" id="BPRP_SHORT" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Long</td><td><input type="text" name="BPRP_LONG" value="" id="BPRP_LONG" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Threshold</td><td><input type="text" name="BPRP_THRESHOLD" value="45" id="BPRP_THRESHOLD" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Window</td><td><input type="text" name="BPRP_WINDOW" value="" id="BPRP_WINDOW" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+				<td>Amino Acids</td><td><input type="text" name="BPRP_AA" value="PVKCYT" id="BPRP_AA" STYLE="width: 200px" /></td>
+			</tr>
+			<tr>
+                            <td>&nbsp;</td>
+                        </tr>
+			<tr>
+				<td><h3>Blast Analysis</h3></td>
+			</tr>
+			<tr>
+				<td>Threshold</td>
+				<td>
+					<input type="text" name="THRESHOLD" value="0.000001" id="THRESHOLD" STYLE="width: 200px" />
+                                </td>
+			</tr>
+                        <tr align="center">
+                            <td colspan="2">
+                                <input type="submit" title="Run" value="Run" onclick="return checkform(document.form3)" name="submit"  id="submit"  alt="submit"/>
+                                <input type="reset" title="Reset" value="Reset" name="Reset"  id="Reset"  alt="Reset"/>
+                            </td>
+                        </tr>
+
+                </table>
+            </form>
+        </center>
+    </body>
+</html>

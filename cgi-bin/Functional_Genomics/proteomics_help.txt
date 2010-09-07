@@ -1,0 +1,175 @@
+Protein Mass Fingerprinting
+
+One of the main issues of proteomics is the identification of proteins based on mass 
+spectrometric data. The bioinformatics group develops new and improved algorithms in 
+the field of peptide mass fingerprinting in close collaboration with the Edison 
+Biotechnology Institute. Proteins represent functional molecules of cells and proteomic 
+information can be used to determine their impact on biological conditions such as 
+differentiation, development or disease. Peptide Mass Fingerprinting and the detection 
+of modifications in the identified proteins can provide insight into the biochemical 
+basis for the development diseases. The multitude of modifications such as oxidation, 
+phosphorylation makes the detailed identification of proteins a non-trivial problem. 
+With the analysis and early detection of proteins associated with the development of 
+diseases such as diabetes, the discovery of diagnostics and therapeutics is feasible. 
+
+Functional proteomics research in general and drug discovery in particular, form one 
+of the main foundations of the current molecular biology research. This project analyzes 
+the functional proteomics research process and provides a requirement analysis for the 
+integrated protein identification process. Protein Identification is responsible for 
+the recognition of proteins that are involved in a metabolic pathway of a function. 
+A detailed analysis of the necessary input and output data for a protein identification 
+software tool is provided to construct the basis of the design and implementation of a 
+functional proteomics software platform. The final software tool features a graphical 
+user interface that allows the manipulation of input and output files and the specified 
+parameters by simple point and click procedures. Timely checks of the Protein 
+Identification results are to automated as well as the prediction of post-translational 
+modifications of the analyzed peptides. The currently time and man power intensive 
+protein identification process will be converted into a simple automated on-click 
+analysis.
+
+Proteomics Experiment
+
+	Experiment	
+
+	In the the experimentation phase of a project a group of specimen is separated into a
+	control group and a treatment group. For the Type-2 Diabetes research the treatment 
+	group is treated with a high fat diet to induce diabetes. Every two weeks the specimen 
+	are being measured. These measurements are conducted on a statistically signi¯cant 
+	number of specimen ¯rst determining the morphological speci¯cation. After this step
+	the specimen are being killed and the organs are removed. The organs are homogenized
+	into a tissue soup and then separated again through centrifuging. After protein 
+	concentration is measured, the centrifuged separation will be reduced and alkylated. 
+	The alkylated tissue can then be analyzed using electrophoretic gels. The proteins of
+	the specimen tissue will be separated according to weight and its isoelectric point 
+	using a 2D SDS PAGE Analysis.
+
+	Image Analysis
+
+	In the image analysis a digital image is captured from the 2D Gel using a digital 
+	camera or a scanner. The captured imaged is cropped and resized to match previously
+	captured images of different specimen. The gamma rate of the picture is adjusted to 
+	allow for a better differentiation of protein spots in the image. The preprocessed 
+	image is then compared to images of specimen take at different time points. These 
+	comparison allows the creation of a quanti¯cation of intensity di®erence of the 
+	shown proteins. With the intensity difference vector an intelligent selection of 
+	diabetes related proteins can be achieved. The selected spots are cut out of the 2D
+	Gel and a Mass Spectrometry is conducted on them. Various software tools have
+	been developed to handle this problem like BIORAD's PDQuest, Melanie III, Image 
+	Master and Progenesis. Since the current tools can not identify interesting spots
+	satisfactorily various improvements have been suggested in the literature.
+
+	Protein Identification
+
+	In the Protein Identifcation stage the selected spots are subjected to a Mass 
+	Spectrometry and a Tandem Mass Spectrometry. These two analysis processes produce 
+	various data files, among them Peak Lists, which provide information about the masses
+	and intensity of the analyzed proteins and peptides. Using computational algorithms 
+	these peak lists are analyzed and the subjected proteins and their post-translational
+	modifcations are identifed.
+
+	In the protein analysis the sequence of the identifed protein is determined and human 
+	homologues are inquired. The human homologue inquiry is based on simple BLAST searches
+	and lead, upon identifcation of a homologue, to a checking of the previous existence 
+	in the metabolic pathway of Type-2 Diabetes or in case of non-existence of a homologue
+	to the discarding of the protein or the publication depending on the extend of the 
+	species Type-2 Diabetes research. If the identifed protein is previously unknown the 
+	protein sequence has to be determined by additional mass spectrometric experiments. The
+	derived sequence will be published and further analyzed for the homology to human proteins.
+
+	Pathway Analysis
+
+	After deriving the homologue protein for the human species the existence in the Type-2 
+	Diabetes related pathways will be determined. If the protein is existent in the diabetes
+	pathways the newly discovered connections will be linked into the pathway to extend the 
+	information content. If the protein is not existent yet, a new pathway will be created, 
+	which then will be linked to the existent pathways to extent the diabetes pathway knowledge.
+
+A peak list
+
+Mass Spectrometry is used to measure the masses of proteolytic peptide fragments. The 
+tryptic digestion of a protein during the Mass Spectrometry yields a specific number 
+of peptides of specific length, sequence and mass. This list of peptides becomes a 
+valuable reference tool know as a peak list. The peptides in a peaklist can be ranked 
+from lowest mass to highest mass revealing unique masses for peptides over six amino acids
+in length, which translates to about 700 Da. Up to 10,000 peaks can be stored in a peak 
+list with an overall mass limit of 16kDa or 255 residues.
+
+The Mass Spectrometry Analysis produces peak lists containing three columns. The first 
+column marks the mass/charge ratio the so called m/z value directly measured by the mass
+analyzer of the Mass Spectrometer. The second column describes the intensity of a peak. 
+Although the mass values of the peaks are the most important information in determining 
+the identity of a protein, the intensity values assist in this process by normalizing 
+the peak information. As a function of the peptide's basicity, length and several other 
+physical and chemical parameters determined during the Mass Spectrometry, their main use 
+is to distinguish an actual signal from noise. The third and last column provides 
+information about the charge provided in the mass analysis. This allows the calculation 
+of the actual mass from the measured mass/charge value.
+
+A Mass Spectrometry peak list format contains a simple set of embedded parameters. They 
+over-ride entries in the corresponding form ¯elds of Peptide Mass Fingerprinting (Protein 
+Identification) tools. Next to embedded parameters a Mass Spectrometry can only contain 
+mass and intensity value entries. Tandem Mass Spectrometry peak lists can hold much more 
+additional information. Sequence queries and specific MS/MS data sets are stored as unique 
+parameters. Different Tandem Mass Spectrometry peak lists can contain different header 
+information depending on their format. The Mascot Generic Format is the preferred peak 
+list format for conducting Peptide Mass Fingerprinting with the Matrixscience tool Mascot.
+
+Software Solution
+
+The current status of the Protein Mass Fingerprinting at Ohio University is based on the 
+submission of one peak list at a time to web sites and a time consuming manual analysis 
+of the produced data. The results induced from the received data will then be analyzed 
+by the submission of the according fragment peak lists to Tandem Mass Spectrometry web 
+sites. The analyzed data is once more analyzed by hand. After the verification, multiple 
+post-translational modifications have to be tested in case the matched proteins score
+was not perfect. This analysis has to be conducted by hand as well, and includes the 
+Mass Spectrometry as well as verifying Tandem Mass Spectrometry.
+
+To tackle this problem the protein mass fingerprinting software takes a peak list file
+and submits it to Protein Prospector's implementation of the MS-Fit algorithm. A link to 
+a locally stored html page containing the results is provided to the user. The user can 
+control which files to submit (batch mode) and the number of predicted proteins returned.
+Furthermore it is possible to restrict searches based on the mass type and the species.
+
+PMF user configurable parameters
+    
+    1. MS Input: Enter a file specification for the peaklist file which you would
+                 like to process. Or press the associated button to browse to a
+                 single file. Once a single file is found you can modify the filespec
+                 by adding DOS wildcards (like *.*) to the file specification, to
+                 include more than one file.
+    2. Output directory: Enter a file specification for the directory where the output
+                 files are to go. Or press the associated button to select a directory
+                 by browsing.
+    3. Taxonomy: Press the button and select the species you would like to search for
+                 matching proteins.
+    4. Mass: The choices are 1) Monoisotopic: only the lowest common isotope for each
+                                              element is used in the mass calculations
+                                              12C, 1H, 14N, 16O, 32S, 31P.
+                             2) Average:      All isotopes for each element are used and
+                                              with their abundances reflecting their
+                                              ”normal” proportion in the biosphere.
+    5. Number of hits: specify the maximum number of hits that you would like to have
+                       returned by the search.
+    6. Overwrite: Checking the overwrite option means that the search will always be done,
+                  even if the results of a previous search already exist on the local
+                  drive. De-selecting this option allows you to do a search run with a
+                  lot of files and only re-search the files that did not return results
+                  on the previous run.
+    7. MS Fit checkbox: Check this box if you actually want to do the PMF search using
+                        the MS Fit website. This is the only option currently available
+                        by design. The plan is, that in the future there will be several
+                        options for doing a PMF search.
+  
+    The Run and Cancel buttons
+    
+    When you have selected all the parameters you want, press the run button to start the
+    PMF search. Links to the results files will appear in the right hand side whenever
+    they become available. You may press the cancel button at any time to stop the PMF
+    search task.
+
+    The right-hand display area
+
+    Results of the PMF search task will be displayed in the right hand pane of the main
+    window. Links to HTML display files will show up in red. Clicking on a link will open
+    the results file using the Web browser on your system.

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" CreateVersion="3.2" version="4.3" modules="freeware" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install &lt;product name&gt;." ValueLocId="*"/>
+    <ROW Property="BannerBitmap" Value="default_banner.bmp" Type="1"/>
+    <ROW Property="DialogBitmap" Value="default_dialog.bmp" Type="1"/>
+    <ROW Property="Manufacturer" Value="Ohio University" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{9773821D-7D62-4CC7-B597-0D402103F765} "/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="BioHio" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="7.1.4.16391"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{DC66879E-B3B4-4FE2-A70A-25DC965EBDE0}"/>
+    <ROW Property="WindowsFamily9X" Value="Windows 9x/ME"/>
+    <ROW Property="WindowsTypeNT" Value="Windows 2000"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="HRGP_DIR" Directory_Parent="dat_DIR" DefaultDir="HRGP"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="bin_DIR" Directory_Parent="APPDIR" DefaultDir="bin"/>
+    <ROW Directory="dat_DIR" Directory_Parent="APPDIR" DefaultDir="dat"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="ath1.pep" ComponentId="{9809F401-DAFF-45B6-935A-DCF43A351F51}" Directory_="HRGP_DIR" Attributes="0" KeyPath="ath1.pep" FullKeyPath="APPDIR\dat\HRGP"/>
+    <ROW Component="hrgp.exe" ComponentId="{F665CB8D-A54B-4177-BF02-9A2D492EB42F}" Directory_="bin_DIR" Attributes="0" KeyPath="hrgp.exe" FullKeyPath="APPDIR\bin\hrgp.exe"/>
+    <ROW Component="hrgp_main.exe" ComponentId="{2D25325F-8F5D-45A3-9B16-2F1EDAEFA97F}" Directory_="bin_DIR" Attributes="0" KeyPath="hrgp_main.exe" FullKeyPath="APPDIR\bin\hrgp_main.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="ath1.pep hrgp_main.exe hrgp.exe"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="ath1.pep" Component_="ath1.pep" FileName="ath1.pep" Attributes="0" SourcePath="..\dat\HRGP\ath1.pep" SelfReg="false" Sequence="1"/>
+    <ROW File="hrgp.exe" Component_="hrgp.exe" FileName="hrgp.exe" Attributes="0" SourcePath="..\bin\hrgp.exe" SelfReg="false" Sequence="3"/>
+    <ROW File="hrgp_main.exe" Component_="hrgp_main.exe" FileName="hrgp_m~1.exe|hrgp_main.exe" Attributes="0" SourcePath="..\bin\hrgp_main.exe" SelfReg="false" Sequence="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;ui.ail&gt;"/>
+    <ROW Path="&lt;ui_en.ail&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="FolderDlg.aip" Path="&lt;FolderDlg.aip&gt;"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;StaticUIStrings.aip&gt;"/>
+    <ROW Fragment="UI.aip" Path="&lt;UI.aip&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="default_banner.bmp" SourcePath="&lt;default-banner.bmp&gt;"/>
+    <ROW Name="default_dialog.bmp" SourcePath="&lt;default-dialog.bmp&gt;"/>
+    <ROW Name="launcher.dll" SourcePath="&lt;launcher.dll&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="1" Source="launcher.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="1" Source="launcher.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="740"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1545"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1300"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="740"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="Version9X OR  (VersionNT &gt;= 500 )" Description="[ProductName] can not be installed on systems earlier than [WindowsTypeNT]"/>
+    <ROW Condition="VersionNT" Description="[ProductName] can not be installed on [WindowsFamily9X]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMediaComponent">
+    <ATTRIBUTE name="Compress" value="1"/>
+    <ATTRIBUTE name="FirstMediaSize" value="0"/>
+    <ATTRIBUTE name="FirstMediaSizeUnit" value="0"/>
+    <ATTRIBUTE name="InstallationType" value="0"/>
+    <ATTRIBUTE name="MediaSize" value="0"/>
+    <ATTRIBUTE name="MediaSizeUnit" value="0"/>
+    <ATTRIBUTE name="Package" value="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="BioHio_HRGP" Directory_="SHORTCUTDIR" Name="BioHio~1|BioHio HRGP" Component_="hrgp.exe" Target="[#hrgp.exe]" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="bin_DIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="UpgradeCode" VersionMax="ProductVersion" Attributes="1025"/>
+    <ROW UpgradeCode="UpgradeCode" VersionMin="ProductVersion" Attributes="2"/>
+  </COMPONENT>
+</DOCUMENT>
